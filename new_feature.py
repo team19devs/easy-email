@@ -11,9 +11,9 @@ def auto_send(sent_name):
     for mail_account in sent_name:
         html = Template(Path("index.html").read_text())
         email = EmailMessage()
-        email['from'] = "Yuldashboyev Farrux"
+        email['from'] = "AnonymCybercik & team19devs"
         email["to"] = mail_account
-        email["subject"] = "Farrux sizga minnatdorchilik bildirdi!"
+        email["subject"] = "Join us on GitHub!"
         print(email)
         email.set_content(html.substitute(emadress=email['to']), 'html')
 
