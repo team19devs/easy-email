@@ -1,15 +1,15 @@
-import smtplib, sys
+import smtplib, sys, os
 from email.message import EmailMessage
 from pathlib import Path
 from string import Template
 from time import sleep
 
-#if __name__=="__main":
 list_names = sys.argv[1:]
-
+user_message = input("OK. Send me message to send: ")
+print(user_message)
 def auto_send(sent_name):
     for mail_account in sent_name:
-        html = Template(Path("index.html").read_text())
+        html = Template(user_message)
         email = EmailMessage()
         email['from'] = "AnonymCybercik & team19devs"
         email["to"] = mail_account
@@ -22,7 +22,10 @@ def auto_send(sent_name):
             sm.starttls()
             sm.login("team19devs1901@gmail.com", 'iamdummy1')
             value = sm.send_message(email)
-            if value:
+            if email:
                 print(f"Email successfully sent to {mail_account}")
+                #sys.exit()
                 return value
+
+
 auto_send(list_names)
